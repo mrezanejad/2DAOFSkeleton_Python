@@ -1,7 +1,7 @@
 
 ## 2D AOF Skeleton
 
-<img src='images/horse_1.png' width=49%/> <img src='images/horse_1_overlay.png' width=50%/>
+<img src='horse_1.png' width=49%/> <img src='horse_1_overlay.png' width=50%/>
 
 The medial axis, or _topological skeleton_, of an object &Omega; is the set of all points in &Omega; having more than one closest point on the object boundary, &part;&Omega;. This repository contains matlab code for computing the medial axis of binary images.
 
