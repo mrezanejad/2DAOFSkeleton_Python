@@ -1,5 +1,5 @@
 
-## 2D AOF Skeleton
+## 2D AOF Skeleton (Python)
 
 <img src='horse_1.png' width=49%/> <img src='horse_1_overlay.png' width=50%/>
 
