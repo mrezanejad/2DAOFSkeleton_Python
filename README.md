@@ -1,20 +1,18 @@
 
-# 2D AOF Skeleton
-This is a jupyter notebook for 2D AOF Skeletonization code
+## 2D AOF Skeleton
+This is a step by step jupyter notebook for 2D AOF Skeletonization code
 
 
 
 ```python
 import matplotlib.pyplot as plt
 from scipy.misc import imresize
-```
-
-
-```python
 import matplotlib.image as mpimg
 import math
 import numpy as np
+```
 
+```python
 def rgb2gray(rgb):
     return np.dot(rgb[...,:3], [0.2989, 0.5870, 0.1140])
 ```
