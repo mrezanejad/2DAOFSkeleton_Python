@@ -7,9 +7,6 @@ The medial axis, or _topological skeleton_, of an object &Omega; is the set of a
 
 A binary image is one with only two pixel values or colors. This code (and all examples) use the convention that the two image colors are black and white, with pixel values 0 and 1 respectively.
 
-The algorithm works on solid, filled in shapes (like the black horse above), as well as thin contours (see [Examples](#examples) section below).
-
-In both cases, the medial axis is only computed in white regions; i.e. &Omega; is considered to be all white pixels in the image, and all black pixels are merely treated as object boundaries, or part of &part;&Omega;. See [Usage](#usage) below for more details.
 
 
 This is a step by step jupyter notebook for 2D AOF Skeletonization code
