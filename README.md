@@ -15,7 +15,7 @@ In both cases, the medial axis is only computed in white regions; i.e. &Omega; i
 This is a step by step jupyter notebook for 2D AOF Skeletonization code
 
 
-
+Step 1 : import some tools
 ```python
 import matplotlib.pyplot as plt
 from scipy.misc import imresize
@@ -24,22 +24,24 @@ import math
 import numpy as np
 ```
 
+Step 2: Create a function to convert RGB images to Grayscale
 ```python
 def rgb2gray(rgb):
     return np.dot(rgb[...,:3], [0.2989, 0.5870, 0.1140])
 ```
 
-
+Step3: Specify your file name!
 ```python
 fileName = "horse.png"
 ```
 
-
+Step 4: Read the image
 ```python
 I=mpimg.imread(fileName)
 ```
 
 
+Step 5: Convert the image to grayscale and invert it to consider the black area for skeletonization process.
 ```python
 I = rgb2gray(I)
 I = 1-I
@@ -63,7 +65,7 @@ imgplot = plt.imshow(I)
 plt.show()
 ```
 
-
+Step 6: Define the tuning parameters. Number of samples is related to the number of points this algorithm considers around a shrinking disk.
 ```python
 number_of_samples = 60
 epsilon = 1 
@@ -76,6 +78,7 @@ flux_threshold = 18
 import scipy.ndimage.morphology as morphOps
 ```
 
+Step 7: Compute the distance transform
 
 ```python
 distImage,IDX = morphOps.distance_transform_edt(I,return_indices=True);
@@ -97,7 +100,7 @@ plt.imshow(distImage)
 ![png](output_13_1.png)
 
 
-
+Step 8: Sample a set of points around a shrinking disk 
 ```python
 def sample_sphere_2D(number_of_samples):
     sphere_points = np.zeros((number_of_samples,2))
@@ -135,7 +138,10 @@ def ind2sub(array_shape, ind):
     rows = (ind.astype('int') / array_shape[1])
     cols = ind % array_shape[1]
     return (rows, cols)
+```
 
+Step 9: This is the main step, where at each point, we compute the flux value that goes through a shrinking disk around a considered point. 
+```python
 def compute_aof(distImage ,IDX,sphere_points,epsilon):
 
     m = distImage.shape[0]
@@ -213,7 +219,7 @@ plt.imshow(fluxImage)
 
 ![png](output_20_1.png)
 
-
+Step 10: Simply threshold the image by a value and get the skeleton. 
 
 ```python
 skeletonImage = fluxImage
@@ -245,7 +251,7 @@ plt.imshow(skeletonImage)
 
 ## Updating
 Assuming you have not made any local changes to these files, you can update your local code to the newest version with [git pull](https://git-scm.com/docs/git-pull).
-Open a terminal, navigate to your `AOFSkeletons/` folder, and run
+Open a terminal, navigate to your `2D AOF Skeleton/` folder, and run
 ```
 git pull
 ```
